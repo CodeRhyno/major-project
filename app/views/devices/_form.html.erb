@@ -1,0 +1,10 @@
+<div class="m-2">
+    <%= simple_form_for device, remote: true do |f| %>
+        <%= f.input :name %>
+        <% if is_admin %>
+            <%= f.input :user_id, collection: User.all.pluck(:id) %>
+        <% end %>
+        <%= f.button :submit, class: 'btn btn-success' %>
+        <button type="button" class="btn btn-danger" onclick="removeForm()">Remove Form</button>
+    <% end %>
+</div>

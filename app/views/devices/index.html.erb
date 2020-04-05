@@ -1,0 +1,15 @@
+<%= link_to "Add New Device", new_device_path, remote: true, class: 'btn btn-primary mt-2 mb-2' %>
+
+<div id="new-device-form-container"></div>
+
+<div id="show-device"></div>
+
+<div id="devices-table">
+    <%= render 'devices/devices_table', devices: @devices %>
+</div>
+
+<script>
+    const removeForm = () => {
+        $('#new-device-form-container').html('')
+    }
+</script>

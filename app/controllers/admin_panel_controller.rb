@@ -9,5 +9,6 @@ class AdminPanelController < ApplicationController
     end
 
     def show_devices_panel
+        redirect_to devices_path
     end
 end
