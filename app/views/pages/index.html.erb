@@ -1,2 +1,10 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">Manage your electrical utilities batter with one click.</p>
+  <hr class="my-4">
+  <p>Sign Up Today</p>
+  <p class="lead">
+    <%= link_to "Log In", new_user_session_path, class: 'btn btn-success btn-lg' %>
+    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+  </p>
+</div>
