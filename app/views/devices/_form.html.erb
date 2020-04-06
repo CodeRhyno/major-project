@@ -1,0 +1,17 @@
+<div class="m-2">
+    <%= simple_form_for device, remote: true do |f| %>
+        <%= f.input :name %>
+        <%= f.input :power_rating %>
+        <% if is_admin %>
+            <%= f.input :user_id, collection: User.all.pluck(:id) %>
+        <% end %>
+        <%= f.button :submit, class: 'btn btn-success' %>
+        <button type="button" class="btn btn-danger" onclick="removeForm()">Remove Form</button>
+    <% end %>
+</div>
+
+<script>
+    function removeForm() {
+        $('#new-device-form-container').html('')
+    }
+</script>

@@ -1,0 +1,28 @@
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Device ID</th>
+        <th scope="col">Power</th>
+        <th scope="col">Active</th>
+        </tr>
+    </thead>
+    <tbody id="device-rating-table">
+        <% if ratings.present? %>
+            <% ratings.each do |rating| %>
+                <tr id="device-rating-<%= rating.device_id %>">
+                    <th scope="row"><%= rating.id %></th>
+                    <td><%= rating.device_id %></td>
+                    <td><%= rating.power_consumption %></td>
+                    <td><%= rating.is_online %></td>
+                </tr>
+            <% end %>
+        <% else %>
+            <div class="alert alert-primary" role="alert">
+                No Data Found!
+            </div>
+        <% end %>
+    </tbody>
+</table>

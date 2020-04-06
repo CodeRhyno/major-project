@@ -1,0 +1,15 @@
+<%= link_to "Add New Device", new_device_path, remote: true, class: 'btn btn-primary mt-2 mb-2' %>
+
+<div id="new-device-form-container"></div>
+
+<div id="show-device"></div>
+
+<div id="devices-table" style="overflow: auto">
+    <%= render 'devices/devices_table', devices: @devices %>
+</div>
+
+<br>
+
+<div id="device-ratings-table">
+    <%= render 'devices/devices_rating', ratings: @last_ratings %>
+</div>

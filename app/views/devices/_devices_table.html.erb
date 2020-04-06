@@ -1,0 +1,30 @@
+<% if devices.present? %>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">UUID</th>
+            <th scope="col">User Email</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% devices.each do |device| %>
+                <tr>
+                    <th scope="row"><%= device.id %></th>
+                    <td><%= link_to device.name, device_path(device), remote: true %></td>
+                    <td><%= device.uuid %></td>
+                    <td><%= device.user.email %></td>
+                    <td>
+                        <%= link_to "Edit", edit_device_path(device), remote: true %> <%= link_to "Delete", device_path(device), method: :delete, data: {confirm: 'Are you sure?'}, remote: true %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <div class="alert alert-primary" role="alert">
+        No Data Found!
+    </div>
+<% end %>
