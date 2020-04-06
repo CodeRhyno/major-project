@@ -1,1 +1,30 @@
-Users
+<% if @users.present? %>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">email</th>
+            <th scope="col">token</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                    <th scope="row"><%= user.id %></th>
+                    <td><%= user.email %></td>
+                    <td id="user-token-<%= user.id %>"><%= user.token %></td>
+                    <td><%= user.created_at %></td>
+                    <td>
+                        <%= link_to "New Token", gen_new_token_path(user), method: :post, remote: true %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <div class="alert alert-primary" role="alert">
+        No Data Found!
+    </div>
+<% end %>

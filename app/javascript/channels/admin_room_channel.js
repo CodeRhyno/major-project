@@ -17,11 +17,12 @@ consumer.subscriptions.create("AdminRoomChannel", {
       if (data[i]) {
         console.log(data[i].device_id)
         const ratingTr = $('#device-rating-' + data[i].device_id)
+        const newTd = '<tr id="device-rating-' + data[i].device_id + '">' + '<th>' + data[i].id + '</th>' + '<th>' + data[i].device_id + '<th>' + data[i].power_consumption + '<th>' + data[i].is_online + '</th>' + '</th>' + '</th>' + '</tr>';
         if (ratingTr.length) {
           console.log('<tr id="device-rating-' + data[i].device_id + '">Abc</tr>');
-          ratingTr.replaceWith('<tr id="device-rating-' + data[i].device_id + '">' + '<th>' + data[i].id + '</th>' + '<th>' + data[i].device_id + '<th>' + data[i].power_consumption + '<th>' + data[i].is_online + '</th>' + '</th>' + '</th>' + '</tr>')
+          ratingTr.replaceWith(newTd)
         } else {
-          $('#device-rating-table').append('<tr id="device-rating-'+data[i].device_id+'">Abc</tr>')
+          $('#device-rating-table').append(newTd)
         }
       }
     }

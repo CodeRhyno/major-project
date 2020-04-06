@@ -6,6 +6,17 @@ class AdminPanelController < ApplicationController
     end
 
     def show_users_panel
+        @users = User.all
+    end
+
+    def generate_new_token
+        @user = User.find(params[:id])
+        @user.token = SecureRandom.hex
+        @user.save
+
+        respond_to do |format|
+            format.js
+        end
     end
 
     def show_devices_panel

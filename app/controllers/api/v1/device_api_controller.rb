@@ -10,7 +10,7 @@ class Api::V1::DeviceApiController < ApplicationController
     all_devices.each do |device|
       device_inactive = devices_inactive.select { |device_inactive| device_inactive.uuid == device.uuid }.blank?
       power_rating = 0
-      if !device_inactive
+      if device_inactive
         power_rating = device.power_rating
       end
       
