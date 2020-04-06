@@ -4,6 +4,12 @@
 
 <div id="show-device"></div>
 
-<div id="devices-table">
+<div id="devices-table" style="overflow: auto">
     <%= render 'devices/devices_table', devices: @devices %>
+</div>
+
+<br>
+
+<div id="device-ratings-table">
+    <%= render 'devices/devices_rating', ratings: @last_ratings %>
 </div>

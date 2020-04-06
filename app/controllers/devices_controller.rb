@@ -5,7 +5,9 @@ class DevicesController < ApplicationController
     before_action :find_device, only: [:show, :edit, :update, :destroy]
 
     def index
-        @devices = Device.all
+        @devices = Device.all.includes(:ratings)
+        @last_ratings = Device.all.includes(:ratings).map { |device| device.ratings.last }
+        @last_ratings = @last_ratings.reject { |element| element.blank? }
     end
 
     def new
@@ -26,6 +28,7 @@ class DevicesController < ApplicationController
     end
 
     def show
+        @device_ratings = Rating.where(device: @device)
         respond_to do |format|
             format.js
         end
@@ -56,7 +59,7 @@ class DevicesController < ApplicationController
     private
 
     def set_params
-        params.require(:device).permit(:name, :user_id)
+        params.require(:device).permit(:name, :user_id, :power_rating)
     end
 
     def find_device
