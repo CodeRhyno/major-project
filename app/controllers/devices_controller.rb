@@ -21,6 +21,7 @@ class DevicesController < ApplicationController
         @device = Device.new(set_params)
         @device.uuid = SecureRandom.hex
         if @device.save
+            ActionCable.server.broadcast 'admin_room_channel', latest_ratings: Device.all.includes(:ratings).map { |device| device.ratings.last }
             respond_to do |format|
                 format.js
             end
